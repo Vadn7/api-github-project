@@ -1,4 +1,3 @@
-let btnEl = document.getElementById("btn")
 async function searchUsername(){
     let data;
     let username=document.getElementById("username").value
@@ -12,7 +11,7 @@ console.log(username);
 
 const response = await fetch(url,{
     headers: {
-      'Authorization': 'token YOUR PERSONAL TOKEN',
+      'Authorization': 'YOUR PERSONAL TOKEN',
     }
 
     });
@@ -20,10 +19,7 @@ const response = await fetch(url,{
       
 
 if (!response.ok){
-
-    document.getElementById("output").innerHTML=`<p style="red">Error, please retry</p>`;
-    throw new Error(`There is an error: ${response.status}`);
-
+    throw new Error(`There is an error: ${response.status}`)
 }
 
 else{
@@ -39,26 +35,19 @@ else{
 
     catch(error){
          console.error("Error fetching data :",error)
-
-
          }
 
 }
 else{
 
-    document.getElementById("output").innerText="Error, please retry"
 
-
+    let para=document.createElement("p")
+    para.style.color="red"
+    para.innerText="Error, please retry";
+    document.getElementById("output").appendChild(para)
 }
 
 }
-
-
-/*function  (){
-
-searchHandler();
-}
-*/
 
 function displayInfo (data) {
 
@@ -81,13 +70,6 @@ output.innerHTML= ` <img src="${data.avatar_url}" alt="Avatar" width="100">
 
                             `
 
-// container.appendChild(title)
-// container.appendChild(para)
-// container.appendChild(para2);
-
-// document.body.appendChild(container);
-
-// console.log(container)
 }
 
 
